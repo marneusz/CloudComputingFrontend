@@ -6,23 +6,20 @@ import Table from 'react-bootstrap/Table'
 
 function Home (){
     const [users, setUsers] = useState([]);
-  
-    useEffect(() => {
-      submitSearch("");
-    }, []);
-    function submitSearch(txt) {
-    if (txt){
-      const url = conf.apiUrl + "fullname=" + txt;
-      fetch(url)
-        .then((resp) => resp.json())
-        .then((resp) => setUsers(resp.Items));}
-        console.log(users)
-    }
+    const [searchTxt, setSeachTxt] = useState("")
+    useEffect(() => { 
+      if (searchTxt){
+        const url = conf.apiUrl + "fullname=" + searchTxt;
+        fetch(url)
+          .then((resp) => resp.json())
+          .then((resp) => setUsers(resp.Items));}
+          console.log(users)
+    }, [searchTxt]); 
 
     return (
     <div>
-      <Search onChange={submitSearch} />
-      {users.length ? ( 
+      <Search onChange={setSeachTxt} />
+      {users.length > 0 && ( 
           <div>
             <Table class="table">
                 <thead>
@@ -40,7 +37,7 @@ function Home (){
             </tbody>
             </Table>
         </div>
-      ) : 'aa'}
+      )  }
     </div>)
 }
 export default Home;
