@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React  from 'react';
 import SearchField from "react-search-field";
 
 
 
-function Search(props){
-    const [response, setResp] = useState({})
+function Search(props){ 
     return <div> 
       <SearchField
         placeholder="Search..."
