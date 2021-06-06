@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import Header from "./header";
+import Bar from "./navbar";
 import Search from "./Search";
 import conf from "./conf.json";
 
@@ -25,7 +25,7 @@ function App() {
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous"
       ></link>
-      <Header />
+      <Bar />
       <div>
         <Search onChange={submitSearch} />
         {users !== [] ? (
