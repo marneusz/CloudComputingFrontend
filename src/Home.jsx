@@ -16,8 +16,7 @@ function Home (){
     }, [searchTxt]); 
 
     return (
-    <div>
-      aaaaaa
+    <div>  
       <Search onChange={setSeachTxt} />
       {(users.length > 0) && ( 
           <div>
