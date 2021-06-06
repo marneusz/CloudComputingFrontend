@@ -13,13 +13,12 @@ function Home (){
         fetch(url)
           .then((resp) => resp.json())
           .then((resp) => setUsers(resp.Items));}
-          console.log(users)
     }, [searchTxt]); 
 
     return (
     <div>
       <Search onChange={setSeachTxt} />
-      {users.length > 0 && ( 
+      {(users.length > 0) && ( 
           <div>
             <Table class="table">
                 <thead>
