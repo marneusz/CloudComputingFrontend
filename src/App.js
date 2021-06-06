@@ -1,6 +1,6 @@
 import "./App.css";
 import Header from "./header";
-import Search from "./Test";
+import Search from "./Search";
 
 function App() {
   return (
