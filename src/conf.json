@@ -1,3 +1,8 @@
 {
-    "apiUrl": "https://0zsbmdfy55.execute-api.us-east-1.amazonaws.com/default/dynamodb?"
+    "apiUrl": "https://0zsbmdfy55.execute-api.us-east-1.amazonaws.com/default/dynamodb?",
+    "cognito": {
+        "userPoolId": "us-east-1_vAGKYBURT",
+        "userPoolClientId": "6or9cj0rqitq0011vpifsg7rb0",
+        "region": "us-east-1"
+    }
 }
