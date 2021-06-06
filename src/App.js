@@ -3,6 +3,7 @@ import Bar from "./navbar";
 import Home from "./Home";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import User from "./user";
+import Auth from "./auth";
 function App() {
   return (
     <BrowserRouter>
@@ -15,10 +16,11 @@ function App() {
         ></link>
         <Bar />
         <Switch>
+          <Route path="/user_:id" children={<User />}></Route>
+          <Route path="/auth" children={<Auth />}></Route>
           <Route path="/">
             <Home />
           </Route>
-          <Route path="/user_:id" children={<User />}></Route>
         </Switch>
       </div>
     </BrowserRouter>

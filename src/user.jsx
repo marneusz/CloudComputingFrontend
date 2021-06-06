@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 function User(){
     const {id} = useParams()
     return (<div>
-        {id}
+        User id from url: {id}
     </div>)
 }
 export default User
