@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { ReactSearchAutocomplete } from 'react-search-autocomplete'
+import SearchField from "react-search-field";
 
-function Search(){
+
+
+function Search(props){
     const [response, setResp] = useState({})
-  useEffect(()=> { 
-    const apiUrl = 'https://0zsbmdfy55.execute-api.us-east-1.amazonaws.com/default/dynamodb?TableName=PronounceMeUsers';
-    fetch(apiUrl, )
-      .then((response) => response.json())
-      .then(response => (setResp( response)));
-  }, [])
-    return <h1> Data on the endpoint: {JSON.stringify(response)}
-        <ReactSearchAutocomplete  />
+    return <h1> 
+      <SearchField
+        placeholder="Search..."
+        onChange={props.onChange}
+      />
      </h1>;
 
 }
