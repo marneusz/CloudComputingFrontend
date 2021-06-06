@@ -3,7 +3,7 @@ import "./App.css";
 import Header from "./header";
 import Search from "./Search";
 import conf from "./conf.json";
-// import { DataGrid } from "@material-ui/data-grid";
+import { DataGrid } from "@material-ui/data-grid";
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -20,14 +20,15 @@ function App() {
       <Header />
       <div>
         <Search onChange={submitSearch} />
-        {JSON.stringify(users)}
-        {/* <DataGrid
-          columns={[
-            { field: "FullName", headerName: "Name ", width: 150 },
-            { field: "Company", headerName: "Company ", width: 100 },
-          ]}
-          rows={users}
-        /> */}
+        <table>
+          <th>Name</th> <th>Company</th>
+          {users.map((row) => (
+            <tr>
+              <td>{row.FullName}</td>
+              <td>{row.Company}</td>
+            </tr>
+          ))}
+        </table>
       </div>
     </div>
   );
