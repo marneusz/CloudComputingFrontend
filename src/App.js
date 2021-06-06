@@ -2,8 +2,8 @@ import { useState } from "react";
 import "./App.css";
 import Header from "./header";
 import Search from "./Search";
-import conf from "./settings.json";
-import { DataGrid } from "@material-ui/data-grid";
+import conf from "./conf.json";
+// import { DataGrid } from "@material-ui/data-grid";
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -21,13 +21,13 @@ function App() {
       <div>
         <Search onChange={submitSearch} />
         {JSON.stringify(users)}
-        <DataGrid
+        {/* <DataGrid
           columns={[
             { field: "FullName", headerName: "Name ", width: 150 },
             { field: "Company", headerName: "Company ", width: 100 },
           ]}
           rows={users}
-        />
+        /> */}
       </div>
     </div>
   );
