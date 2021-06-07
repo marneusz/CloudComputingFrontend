@@ -11,8 +11,7 @@ render() {
     <Nav className="mr-auto">
       <Nav.Link href="/">Home</Nav.Link>
       <Nav.Link href="user_7">Your Profile</Nav.Link> 
-      <Nav.Link href="signup">Register</Nav.Link> 
-      <Nav.Link href="login">Login</Nav.Link> 
+      <Nav.Link href="accountpanel">Account</Nav.Link>
     </Nav>
   </Navbar.Collapse>
 </Navbar>

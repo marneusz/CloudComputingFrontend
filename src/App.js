@@ -3,8 +3,7 @@ import Bar from "./navbar";
 import Home from "./Home";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import User from "./user";
-import Signup from "./components/Signup";
-import Login from "./components/Login";
+import AccountPanel from "./components/AccountPanel";
 
 function App() {
   return (
@@ -19,8 +18,7 @@ function App() {
         <Bar />
         <Switch>
           <Route path="/user_:id" children={<User />}></Route>
-          <Route path="/signup" children={<Signup />}></Route>
-          <Route path="/login" children={<Login />}></Route>
+          <Route path="/accountpanel" children={<AccountPanel />}></Route>
           <Route path="/">
             <Home />
           </Route>
