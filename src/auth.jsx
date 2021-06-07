@@ -37,7 +37,7 @@ function Auth(){
                 onChange={event => setPassword(event.target.value)}
             />
 
-            <button type='submit'>Sign Up!</button>
+            <button type='submit'>Signup</button>
         </form>
     </div>
     )
