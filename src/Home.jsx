@@ -1,8 +1,9 @@
 import React from 'react';
 import { useEffect, useState } from "react";
 import conf from "./conf.json";
-import Search from "./Search";
+import Search from "./components/Search";
 import Table from 'react-bootstrap/Table'
+import FileUploader from './fileupload';
 
 function Home (){
     const [users, setUsers] = useState([]);
@@ -36,7 +37,8 @@ function Home (){
             </tbody>
             </Table>
         </div>
-      )  }
+      )  } 
+            <FileUploader/>
     </div>)
 }
 export default Home;

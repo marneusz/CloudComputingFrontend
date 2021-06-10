@@ -9,6 +9,8 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "amazon-cognito-identity-js": "^5.0.2",
+    "aws-sdk": "^2.925.0",
+    "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "mdbreact": "^5.0.2",
     "react": "^17.0.2",
