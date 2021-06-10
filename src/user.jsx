@@ -1,10 +1,24 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { useHistory } from "react-router-dom";
+import Pool from './UserPool'
+import Amplify, { Auth } from 'aws-amplify';
+import FileInput from './fileupload';
 
-function User(){
-    const {id} = useParams()
+Pool.getCurrentUser();
+
+function User(){ 
+    let history = useHistory();
+    const currentUser = Pool.getCurrentUser()
+    useEffect(() => {  
+        console.log(currentUser)
+    if (!currentUser){
+        history.push('/accountpanel')
+    }
+    },[]);
     return (<div>
-        User id from url: {id}
+        {currentUser ?
+        <FileInput username={currentUser.username}></FileInput>: "Please log in."}
     </div>)
 }
 export default User

@@ -17,7 +17,7 @@ function App() {
         ></link>
         <Bar />
         <Switch>
-          <Route path="/user_:id" children={<User />}></Route>
+          <Route path="/user" children={<User />}></Route>
           <Route path="/accountpanel" children={<AccountPanel />}></Route>
           <Route path="/">
             <Home />

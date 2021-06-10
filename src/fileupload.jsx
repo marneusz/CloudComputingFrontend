@@ -18,7 +18,8 @@ class FileInput extends React.Component {
     async handleSubmit(event) {
       event.preventDefault();
       const file =  this.fileInput.current.files[0]
-      const resp = await fetch(conf.uploadUrl + `fname=SampleCognitoId${Math.floor(Math.random() * 1000000)}&type=${this.fileInput.current.files[0].type}`)
+      console.log(this.props)
+      const resp = await fetch(conf.uploadUrl + `fname=${this.props.username}&type=${this.fileInput.current.files[0].type}`)
       .then(resp => resp.json()) 
       fetch(resp.uploadURL, {
         method: 'PUT',
