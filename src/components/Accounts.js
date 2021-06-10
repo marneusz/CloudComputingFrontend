@@ -14,7 +14,14 @@ const Account = props => {
                     if (err) {
                         reject();
                     } else {
-                        resolve(session);
+                        const token = session.getIdToken().getJwtToken();
+                        resolve({
+                            user, headers: {
+                                Authorization: token
+                            },
+                            ...session
+                        });
+                        
                     }
                 });
             } else {

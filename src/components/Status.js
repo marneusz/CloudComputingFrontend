@@ -19,6 +19,8 @@ function Status() {
           <div>
             You are logged in.
             <button onClick={logout}>Logout</button>
+            <button >Create Profile</button>
+            <button >Edit Profile</button>
           </div>
         ) : 'Please login below.'}
       </div>
