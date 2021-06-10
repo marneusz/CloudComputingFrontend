@@ -10,7 +10,7 @@ function Home (){
     const [searchTxt, setSeachTxt] = useState("")
     useEffect(() => { 
       if (searchTxt){
-        const url = conf.apiUrl + "fullname=" + searchTxt;
+        const url = conf.apiUrl + "?fullname=" + searchTxt;
         fetch(url)
           .then((resp) => resp.json())
           .then((resp) => setUsers(resp.Items));}
@@ -38,7 +38,6 @@ function Home (){
             </Table>
         </div>
       )  } 
-            <FileUploader/>
     </div>)
 }
 export default Home;

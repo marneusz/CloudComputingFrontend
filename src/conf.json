@@ -1,6 +1,6 @@
 {
-    "apiUrl": "https://0zsbmdfy55.execute-api.us-east-1.amazonaws.com/default/dynamodb?",
-    "uploadUrl": "https://lueckibp96.execute-api.us-east-1.amazonaws.com/uploads?",
+    "apiUrl": "https://0zsbmdfy55.execute-api.us-east-1.amazonaws.com/default/dynamodb",
+    "uploadUrl": "https://lueckibp96.execute-api.us-east-1.amazonaws.com/uploads",
     "cognito": {
         "userPoolId": "us-east-1_mVdrYyyto",
         "userPoolClientId": "16ckg3dsc768k1bvrr5rt2vaia",

@@ -19,7 +19,7 @@ class FileInput extends React.Component {
       event.preventDefault();
       const file =  this.fileInput.current.files[0]
       console.log(this.props)
-      const resp = await fetch(conf.uploadUrl + `fname=${this.props.username}&type=${this.fileInput.current.files[0].type}`)
+      const resp = await fetch(conf.uploadUrl + `?fname=${this.props.username}&type=${this.fileInput.current.files[0].type}`)
       .then(resp => resp.json()) 
       fetch(resp.uploadURL, {
         method: 'PUT',
