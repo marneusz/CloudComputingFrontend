@@ -30,19 +30,13 @@ function User(){
         event.preventDefault()
         const body = {
             "fullname": input.fullname,
-            "company": input.fullname,
+            "company": input.company,
             "username": currentUser.username
         }
 
         console.log(body)
-        fetch("https://0zsbmdfy55.execute-api.us-east-1.amazonaws.com/default/dynamodb" , {
-            method: 'POST',  
-            headers: {
-                'Accept': 'application/json, text/plain, */*',
-              'Content-Type': 'application/json' 
-            },  
-            body: JSON.stringify(body) // body data type must match "Content-Type" header
-          }).catch(e=> console.log(e));
+        axios.post(conf.apiUrl , body
+          ).catch(e=> console.log(e));
     }
     return (<div>
         {currentUser ?
