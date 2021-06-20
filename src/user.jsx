@@ -36,7 +36,9 @@ function User(){
 
         console.log(body)
         axios.post(conf.apiUrl , body
-          ).catch(e=> console.log(e));
+          )
+          .then(r=> console.log('resp',r))
+          .catch(e=> console.log(e));
     }
     return (<div>
         {currentUser ?
