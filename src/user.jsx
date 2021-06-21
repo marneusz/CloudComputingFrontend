@@ -28,7 +28,12 @@ function User(){
           const url = conf.apiUrl + "?username=" + currentUser.username;
           fetch(url, {headers: headers})
             .then((resp) => resp.json())
-            .then((resp) => {if (resp.Items) setUserData(resp.Items[0])})
+            .then((resp) => {
+                if (resp.Items) {
+                    setUserData(resp.Items[0]);
+                    setInput({company: resp.Items[0].Company, 
+                        fullname: resp.Items[0].FullName})}
+                    })
             .catch(e=> console.log(e));}
       ).catch(e=> console.log('getSession', e))
     },[]);
@@ -57,12 +62,19 @@ function User(){
     return (<div>
         {currentUser ?
         <div>
+        {/* // {JSON.stringify(input)}
+        //     {JSON.stringify(userData)} */}
         <form onSubmit={addUser}>
-        <input name='fullname' placeholder ={userData.FullName || 'Fullname'} onChange={handleInputChange}></input>
-            <input name='company' placeholder = {userData.Company || 'Company'} onChange={handleInputChange}></input>
+        <label>Full name:</label>
+        <input name='fullname' placeholder ={ 'Fullname'} onChange={handleInputChange} value={input.fullname}></input>
+        <br>
+        </br>
+        <label>Company:</label>
+            <input name='company' placeholder = { 'Company'} onChange={handleInputChange} value={input.company}></input>
+            <br/>
             <button type='submit'>Submit</button>
         </form>
-        
+        {userData.SoundUri && <a href={userData.SoundUri}>Your current voice recording</a> }
         <FileInput userData={userData} username={currentUser.username}></FileInput>
         </div>: "Please log in."}
     </div>)

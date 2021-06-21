@@ -33,7 +33,7 @@ function Home (){
             <Table class="table">
                 <thead>
 
-            <th>Name</th> <th>Company</th>
+            <th>Name</th> <th>Company</th> <th>Pronounciation</th>
                 </thead>
                 <tbody>
 
@@ -41,6 +41,7 @@ function Home (){
                 <tr>
                 <td>{row.FullName}</td>
                 <td>{row.Company}</td>
+                <td><a href={row.SoundUri}>Hear my name!</a></td>
                 </tr>
             ))}
             </tbody>
