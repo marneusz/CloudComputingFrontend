@@ -19,7 +19,7 @@ function Home (){
           fetch(url, {headers: headers})
             .then((resp) => resp.json())
             .then((resp) => setUsers(resp.Items));}
-      }, [searchTxt]); 
+      }, [searchTxt]);
     })
 
     return (

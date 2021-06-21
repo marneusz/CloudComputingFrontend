@@ -17,7 +17,6 @@ const Account = (props) => {
                         resolve({
                             user,
                             headers: {
-                                'Content-Type': 'application/json',
                                 'Authorization': token
                             },
                             ...session

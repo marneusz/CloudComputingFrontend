@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import conf from './conf.json' 
+import { AccountContext } from './components/Accounts';
 
 const toBase64 = file => new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -10,29 +11,38 @@ const toBase64 = file => new Promise((resolve, reject) => {
 
 
 class FileInput extends React.Component {
+    static contextType = AccountContext;
     constructor(props) {
       super(props);
       this.handleSubmit = this.handleSubmit.bind(this);
       this.fileInput = React.createRef();
     }
     async handleSubmit(event) {
-      event.preventDefault();
-      const file =  this.fileInput.current.files[0]
-      console.log(this.props)
-      const resp = await fetch(conf.uploadUrl + `?fname=${this.props.username}&type=${this.fileInput.current.files[0].type}`)
-      .then(resp => resp.json()) 
-      fetch(resp.uploadURL, {
-        method: 'PUT',
-        headers: {
-        'Content-Type': resp.ContentType,
-       },
-        body: file,
-      }).then(function (response) {
-         console.log(response);
-        })
-         .catch(function (error) {
-          console.log(error);
-       });    
+      const { getSession } = this.context;
+      getSession().then(async ({ headers }) => {
+        event.preventDefault();
+        const file =  this.fileInput.current.files[0]
+        console.log(this.props)
+        var token = headers.Authorization
+        console.log(token)
+        const resp = await fetch(conf.uploadUrl + `?fname=${this.props.username}&type=${this.fileInput.current.files[0].type}`, { headers: {
+          'Authorization': token
+        }})
+        .then(resp => resp.json()) 
+        fetch(resp.uploadURL, {
+          method: 'PUT',
+          headers: {
+          'Content-Type': resp.ContentType
+        },
+          body: file,
+        }).then(function (response) {
+          console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+        });    
+    })
+        
     }
   
     render() {
