@@ -14,6 +14,7 @@ Pool.getCurrentUser();
 function User(){
     const { getSession } = useContext(AccountContext);
     const [input, setInput] = useState({})
+    const [userData, setUserData] = useState({})
     let history = useHistory();
     const currentUser = Pool.getCurrentUser()
     useEffect(() => {  
@@ -21,6 +22,15 @@ function User(){
     if (!currentUser){
         history.push('/accountpanel')
     }
+    
+    getSession().then( ({ headers }) => {
+        console.log('headers', headers)
+          const url = conf.apiUrl + "?username=" + currentUser.username;
+          fetch(url, {headers: headers})
+            .then((resp) => resp.json())
+            .then((resp) => {if (resp.Items) setUserData(resp.Items[0])})
+            .catch(e=> console.log(e));}
+      ).catch(e=> console.log('getSession', e))
     },[]);
 
     function handleInputChange(event) {
@@ -45,9 +55,10 @@ function User(){
     return (<div>
         {currentUser ?
         <div>
+        {JSON.stringify(userData)}
         <form onSubmit={addUser}>
-        <input name='fullname' placeholder = 'Fullname' onChange={handleInputChange}></input>
-            <input name='company' placeholder = 'Company' onChange={handleInputChange}></input>
+        <input name='fullname' placeholder ={userData.FullName || 'Fullname'} onChange={handleInputChange}></input>
+            <input name='company' placeholder = {userData.Company || 'Company'} onChange={handleInputChange}></input>
             <button type='submit'>Submit</button>
         </form>
         

@@ -13,14 +13,17 @@ function Home (){
     const [users, setUsers] = useState([]);
     const [searchTxt, setSeachTxt] = useState("")
     useEffect(() => { 
-      getSession().then(async ({ headers }) => {
+      getSession().then( ({ headers }) => {
+        console.log('headers', headers)
         if (searchTxt){
           const url = conf.apiUrl + "?fullname=" + searchTxt;
           fetch(url, {headers: headers})
             .then((resp) => resp.json())
-            .then((resp) => setUsers(resp.Items));}
-      }, [searchTxt]);
-    })
+            .then((resp) => setUsers(resp.Items))
+            .catch(e=> console.log(e));}
+      }).catch(e=> console.log('getSession', e))
+    }, [searchTxt]);
+    
 
     return (
     <div>  
