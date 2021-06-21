@@ -45,9 +45,11 @@ function User(){
             const body = {
                 "fullname": input.fullname,
                 "company": input.company,
-                "username": currentUser.username
+                "username": currentUser.username,
+                "SoundUri": userData.SoundUri
             }
             console.log(headers)
+            console.log(body)
             axios.post(conf.apiUrl, body, {headers: headers}).catch(e=> console.log(e));
         })
         
@@ -55,14 +57,13 @@ function User(){
     return (<div>
         {currentUser ?
         <div>
-        {JSON.stringify(userData)}
         <form onSubmit={addUser}>
         <input name='fullname' placeholder ={userData.FullName || 'Fullname'} onChange={handleInputChange}></input>
             <input name='company' placeholder = {userData.Company || 'Company'} onChange={handleInputChange}></input>
             <button type='submit'>Submit</button>
         </form>
         
-        <FileInput username={currentUser.username}></FileInput>
+        <FileInput userData={userData} username={currentUser.username}></FileInput>
         </div>: "Please log in."}
     </div>)
 }

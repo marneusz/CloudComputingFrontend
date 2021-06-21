@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import conf from './conf.json' 
 import { AccountContext } from './components/Accounts';
+import axios from 'axios'
 
 const toBase64 = file => new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -40,7 +41,21 @@ class FileInput extends React.Component {
           })
           .catch(function (error) {
             console.log(error);
-        });    
+        })
+        const getUrl = resp.uploadURL.split('?')[0]
+        console.log(getUrl)
+        const body = {
+            "fullname": this.props.userData.FullName,
+            "company": this.props.userData.Company,
+            "username": this.props.username,
+            "SoundUri": getUrl
+        }
+        console.log(headers)
+        console.log(body)
+        axios.post(conf.apiUrl, body, {headers: headers}).catch(e=> console.log(e));
+      
+
+        ;    
     })
         
     }
@@ -49,7 +64,7 @@ class FileInput extends React.Component {
       return (
         <form onSubmit={this.handleSubmit}>
           <label>
-            Upload file:
+            Upload file: 
             <input type="file" ref={this.fileInput} />
           </label>
           <br />
