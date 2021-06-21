@@ -4,8 +4,7 @@ import Pool from '../UserPool'
 
 const AccountContext = createContext();
 
-
-const Account = props => {
+const Account = (props) => {
     const getSession = async () => 
         await new Promise((resolve, reject) => {
             const user = Pool.getCurrentUser();
@@ -16,18 +15,20 @@ const Account = props => {
                     } else {
                         const token = session.getIdToken().getJwtToken();
                         resolve({
-                            user, headers: {
-                                Authorization: token
+                            user,
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': token
                             },
                             ...session
                         });
                         
                     }
-                });
+                })
             } else {
                 reject();
             }
-        });
+        })
 
   const authenticate = async (Username, Password) => {
     await new Promise((resolve, reject) => {

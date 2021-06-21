@@ -7,9 +7,13 @@ import FileInput from './fileupload';
 import axios from 'axios';
 import conf from'./conf.json'
 
+import Status from './components/Status';
+import { Account, AccountContext } from './components/Accounts';
+
 Pool.getCurrentUser();
 
-function User(){ 
+function User(){
+    const { getSession } = useContext(AccountContext);
     const [input, setInput] = useState({})
     let history = useHistory();
     const currentUser = Pool.getCurrentUser()
@@ -27,18 +31,17 @@ function User(){
         
 
     function addUser(event){
-        event.preventDefault()
-        const body = {
-            "fullname": input.fullname,
-            "company": input.company,
-            "username": currentUser.username
-        }
-
-        console.log(body)
-        axios.post(conf.apiUrl , body
-          )
-          .then(r=> console.log('resp',r))
-          .catch(e=> console.log(e));
+        getSession().then(async ({ user, headers }) => {
+            event.preventDefault()
+            const body = {
+                "fullname": input.fullname,
+                "company": input.company,
+                "username": currentUser.username
+            }
+            console.log(headers)
+            axios.post(conf.apiUrl , body, {headers: headers}).catch(e=> console.log(e));
+        })
+        
     }
     return (<div>
         {currentUser ?
@@ -48,7 +51,9 @@ function User(){
             <input name='company' placeholder = 'Company' onChange={handleInputChange}></input>
             <button type='submit'>Submit</button>
         </form>
-        <FileInput username={currentUser.username}></FileInput></div>: "Please log in."}
+        
+        <FileInput username={currentUser.username}></FileInput>
+        </div>: "Please log in."}
     </div>)
 }
 export default User

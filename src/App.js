@@ -4,6 +4,7 @@ import Home from "./Home";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import User from "./user";
 import AccountPanel from "./components/AccountPanel";
+import {Account} from "./components/Accounts"
 
 function App() {
   return (
@@ -17,11 +18,14 @@ function App() {
         ></link>
         <Bar />
         <Switch>
-          <Route path="/user" children={<User />}></Route>
-          <Route path="/accountpanel" children={<AccountPanel />}></Route>
-          <Route path="/">
-            <Home />
-          </Route>
+          <Account>
+            <Route path="/user" children={<User />}></Route>
+            <Route path="/accountpanel" children={<AccountPanel />}></Route>
+            </Account>
+            <Route path="/">
+              <Home />
+            </Route>
+          
         </Switch>
       </div>
     </BrowserRouter>
