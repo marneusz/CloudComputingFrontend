@@ -7,7 +7,6 @@ import FileInput from './fileupload';
 import axios from 'axios';
 import conf from'./conf.json'
 
-import Status from './components/Status';
 import { Account, AccountContext } from './components/Accounts';
 
 Pool.getCurrentUser();
@@ -39,7 +38,7 @@ function User(){
                 "username": currentUser.username
             }
             console.log(headers)
-            axios.post(conf.apiUrl , body, {headers: headers}).catch(e=> console.log(e));
+            axios.post(conf.apiUrl, body, {headers: headers}).catch(e=> console.log(e));
         })
         
     }
