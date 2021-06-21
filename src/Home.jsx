@@ -37,7 +37,7 @@ function Home (){
             </tbody>
             </Table>
         </div>
-      )  } 
+      )  }  
     </div>)
 }
 export default Home;
