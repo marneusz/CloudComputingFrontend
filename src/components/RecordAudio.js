@@ -45,6 +45,7 @@ class RecordAudio extends React.Component {
       <div>
         <AudioReactRecorder
           state={recordState}
+          type='audio/mp3'
           onStop={this.onStop}
           backgroundColor='rgb(255,255,255)'
         />
