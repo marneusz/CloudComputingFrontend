@@ -46,8 +46,7 @@ function User(){
         
 
     function addUser(event){
-        getSession().then(async ({ user, headers }) => {
-            event.preventDefault()
+        getSession().then(async ({ user, headers }) => { 
             const body = {
                 "fullname": input.fullname,
                 "company": input.company,

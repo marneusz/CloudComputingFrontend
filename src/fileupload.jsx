@@ -21,7 +21,6 @@ class FileInput extends React.Component {
     async handleSubmit(event) {
       const { getSession } = this.context;
       getSession().then(async ({ headers }) => {
-        event.preventDefault();
         const file =  this.fileInput.current.files[0]
         console.log(this.props)
         var token = headers.Authorization
