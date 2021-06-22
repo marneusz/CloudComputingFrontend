@@ -12,6 +12,7 @@ render() {
       <Nav.Link href="/">Home</Nav.Link>
       <Nav.Link href="user">Your Profile</Nav.Link> 
       <Nav.Link href="accountpanel">Account</Nav.Link>
+      <Nav.Link href="recordaudio">Record Audio</Nav.Link>
     </Nav>
   </Navbar.Collapse>
 </Navbar>

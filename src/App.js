@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import User from "./user";
 import AccountPanel from "./components/AccountPanel";
 import { Account } from "./components/Accounts";
+import RecordAudio from "./components/RecordAudio"
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
           <Account>
             <Route path="/user" children={<User />}></Route>
             <Route path="/accountpanel" children={<AccountPanel />}></Route>
-
+            <Route path="/recordaudio" children={<RecordAudio />}></Route>
             <Route path="/">
               <Home />
             </Route>
