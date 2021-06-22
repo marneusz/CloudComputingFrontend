@@ -6,6 +6,7 @@ import Amplify, { Auth } from 'aws-amplify';
 import FileInput from './fileupload';
 import axios from 'axios';
 import conf from'./conf.json'
+import _ from 'lodash'
 
 import { Account, AccountContext } from './components/Accounts';
 
@@ -51,7 +52,7 @@ function User(){
                 "fullname": input.fullname,
                 "company": input.company,
                 "username": currentUser.username,
-                "SoundUri": userData.SoundUri
+                "SoundUri": _.get(userData, "SoundUri", null)
             }
             console.log(headers)
             console.log(body)
@@ -74,7 +75,7 @@ function User(){
             <br/>
             <button type='submit'>Submit</button>
         </form>
-        {userData.SoundUri && <a href={userData.SoundUri}>Your current voice recording</a> }
+        {_.get(userData, "SoundUri", null) && <a href={userData.SoundUri}>Your current voice recording</a> }
         <FileInput userData={userData} username={currentUser.username}></FileInput>
         </div>: "Please log in."}
     </div>)
