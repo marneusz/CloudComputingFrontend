@@ -8,6 +8,7 @@ function Login() {
   const { authenticate } = useContext(AccountContext);
 
   const onSubmit = (event) => {
+    event.preventDefault();
     authenticate(email, password)
       .then((data) => {
         console.log("Logged in!", data);
