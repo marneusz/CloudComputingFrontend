@@ -1,45 +1,70 @@
-import React, { Component } from 'react'
- 
+import React from 'react'
+
 import AudioReactRecorder, { RecordState } from 'audio-react-recorder'
- 
-class RecordAudio extends Component {
+import './RecordAudio.css'
+
+class RecordAudio extends React.Component {
   constructor(props) {
     super(props)
- 
+
     this.state = {
-      recordState: null
+      recordState: null,
+      audioData: null
     }
   }
- 
+
   start = () => {
     this.setState({
       recordState: RecordState.START
     })
   }
- 
+
+  pause = () => {
+    this.setState({
+      recordState: RecordState.PAUSE
+    })
+  }
+
   stop = () => {
     this.setState({
       recordState: RecordState.STOP
     })
   }
- 
-  //audioData contains blob and blobUrl
-  onStop = (audioData) => {
-    console.log('audioData', audioData)
+
+  onStop = (data) => {
+    this.setState({
+      audioData: data
+    })
+    console.log('onStop: audio data', data)
   }
- 
+
   render() {
     const { recordState } = this.state
- 
+
     return (
       <div>
-        <AudioReactRecorder state={recordState} onStop={this.onStop} />
- 
-        <button onClick={this.start}>Start</button>
-        <button onClick={this.stop}>Stop</button>
+        <AudioReactRecorder
+          state={recordState}
+          onStop={this.onStop}
+          backgroundColor='rgb(255,255,255)'
+        />
+        <audio
+          id='audio'
+          controls
+          src={this.state.audioData ? this.state.audioData.url : null}
+        ></audio>
+        <button id='record' onClick={this.start}>
+          Start
+        </button>
+        <button id='pause' onClick={this.pause}>
+          Pause
+        </button>
+        <button id='stop' onClick={this.stop}>
+          Stop
+        </button>
       </div>
     )
   }
 }
 
-export default RecordAudio;
+export default RecordAudio
