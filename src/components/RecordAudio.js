@@ -54,6 +54,7 @@ class RecordAudio extends React.Component {
           controls
           src={this.state.audioData ? this.state.audioData.url : null}
         ></audio>
+        <br></br>
         <button id='record' onClick={this.start}>
           Start
         </button>

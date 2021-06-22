@@ -8,8 +8,10 @@ function AccountPanel() {
   return (
     <Account>
       <Status />
-      <Signup />
+      <br></br>
       <Login />
+      <br></br>
+      <Signup />
     </Account>
   );
 }

@@ -17,7 +17,7 @@ function Signup(){
 
     return (
     <div>
-        Here goes authentication.
+        You can register your account here!
         <form onSubmit={onSubmit}>
             <input 
                 value={email}
@@ -30,6 +30,7 @@ function Signup(){
 
             <button type='submit'>Signup</button>
         </form>
+        <br></br>
     </div>
     )
 }

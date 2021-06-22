@@ -20,7 +20,7 @@ function Login() {
 
   return (
     <div>
-      Here goes logging in.
+      Here you can log into your account!
       <form onSubmit={onSubmit}>
         <input
           value={email}
